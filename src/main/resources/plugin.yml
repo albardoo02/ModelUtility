@@ -1,0 +1,6 @@
+name: ModelUtility
+version: '${version}'
+main: net.azisaba.modelutility.ModelUtility
+api-version: '1.15'
+author: albardoo02
+description: CustomModelData utility
