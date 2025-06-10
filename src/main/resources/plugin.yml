@@ -4,3 +4,32 @@ main: net.azisaba.modelutility.ModelUtility
 api-version: '1.15'
 author: albardoo02
 description: CustomModelData utility
+commands:
+  addcustommodel:
+    description: 手に持っているアイテムにカスタムモデル値を設定します
+    permission: modelutility.command.addcustommodel
+    aliases: acm
+  checkcustommodel:
+    description: 手に持っているアイテムのカスタムモデル値を表示します
+    permission: modelutility.command.checkcustommodel
+    aliases: gcm
+  custommodellist:
+    description: 指定したアイテムIDのカスタムモデル一覧GUIを表示します
+    permission: modelutility.command.custommodellist
+    aliases:
+      - modellist
+      - acmlist
+
+permissions:
+  modelutility.command.*:
+    default: op
+    children:
+      modelutility.command.addcustommodel: true
+      modelutility.command.checkcustommodel: true
+      modelutility.command.custommodellist: true
+  modelutility.command.addcustommodel:
+    default: op
+  modelutility.command.checkcustommodel:
+    default: op
+  modelutility.command.custommodellist:
+    default: op

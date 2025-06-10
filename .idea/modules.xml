@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ModelUtility.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ModelUtility.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/net.azisaba.ModelUtility.main.iml" filepath="$PROJECT_DIR$/.idea/modules/net.azisaba.ModelUtility.main.iml" />
     </modules>
   </component>
 </project>

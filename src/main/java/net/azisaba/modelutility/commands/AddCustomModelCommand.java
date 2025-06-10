@@ -26,7 +26,7 @@ public class AddCustomModelCommand implements CommandExecutor {
             return true;
         }
         Player player = (Player) sender;
-        if (command.getName().equals("addcustommodel")) {
+        if (command.getName().equalsIgnoreCase("addcustommodel")) {
             if (!sender.hasPermission("modelutility.command.addcustommodel")) {
                 messageUtil.errorMessage(player);
                 return true;
