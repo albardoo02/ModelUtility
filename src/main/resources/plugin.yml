@@ -4,3 +4,17 @@ main: net.azisaba.modelutility.ModelUtility
 api-version: '1.15'
 author: albardoo02
 description: CustomModelData utility
+commands:
+  modelview:
+    description: "指定したアイテムのカスタムモデルデータ値の一覧をGUIで表示する"
+    aliases:
+      - model
+      - viewmodelgui
+  addcustommodel:
+    description: "アイテムにカスタムモデルデータ値を設定する"
+    aliases:
+      - acm
+  checkcustommodel:
+    description: "アイテムに設定されているカスタムモデルデータ値を確認する"
+    aliases:
+      - gcm

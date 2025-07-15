@@ -1,22 +1,29 @@
 package net.azisaba.modelutility.commands;
 
-import net.azisaba.modelutility.util.MessageUtil;
+import net.azisaba.modelutility.util.MessageManager;
 import org.bukkit.command.CommandExecutor;
 import net.azisaba.modelutility.ModelUtility;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.util.StringUtil;
 
-public class AddCustomModelCommand implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class AddCustomModelCommand implements CommandExecutor, TabCompleter {
 
     private final ModelUtility plugin;
-    private final MessageUtil messageUtil;
+    private final MessageManager messageManager;
 
-    public AddCustomModelCommand(ModelUtility plugin, MessageUtil messageUtil) {
+    public AddCustomModelCommand(ModelUtility plugin, MessageManager messageManager) {
         this.plugin = plugin;
-        this.messageUtil = messageUtil;
+        this.messageManager = messageManager;
     }
 
     @Override
@@ -28,12 +35,12 @@ public class AddCustomModelCommand implements CommandExecutor {
         Player player = (Player) sender;
         if (command.getName().equals("addcustommodel")) {
             if (!sender.hasPermission("modelutility.command.addcustommodel")) {
-                messageUtil.errorMessage(player);
+                messageManager.sendMessage(player, "PermissionError");
                 return true;
             }
 
             if (args.length == 0) {
-                messageUtil.sendMessage(player, "&e /acm <モデル番号>");
+                messageManager.sendMessage(player, "AcmCommandUsage");
             }
 
             try {
@@ -44,13 +51,36 @@ public class AddCustomModelCommand implements CommandExecutor {
                 assert meta != null;
                 meta.setCustomModelData(id);
                 item.setItemMeta(meta);
-                messageUtil.sendMessage(player, "&fカスタムモデルデータ値を&d" + id + "&fに設定しました");
+
+                Map<String, String> placeholders = new HashMap<>();
+                placeholders.put("%id%", String.valueOf(id));
+                messageManager.sendMessage(player, "SetCustomModel", placeholders);
                 return true;
             } catch (NullPointerException | NumberFormatException exception) {
-                messageUtil.sendMessage(player, "&cコマンドを正しく入力してください");
+                messageManager.sendMessage(player, "AcmCommandError");
                 return true;
             }
         }
         return true;
+    }
+
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        if (command.getName().equalsIgnoreCase("acm")) {
+            if (args.length == 1) {
+                List<String> completions = new ArrayList<>();
+                String currentInput = args[0];
+
+                for (int i = 1; i <= 1000; i++) {
+                    String numberStr = String.valueOf(i);
+                    if (numberStr.startsWith(currentInput)) {
+                        completions.add(numberStr);
+                    }
+                }
+                return StringUtil.copyPartialMatches(args[0], completions, new ArrayList<>());
+            }
+        }
+        return java.util.Collections.emptyList();
     }
 }

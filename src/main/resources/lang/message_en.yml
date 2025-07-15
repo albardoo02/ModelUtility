@@ -1,0 +1,8 @@
+PermissionError: "&cno permission"
+AcmCommandUsage: "/acm <int>"
+SetCustomModel: "Custom Model Data value set to %id%"
+AcmCommandError: "Enter valid integer or command"
+GcmCommandError: "/gcm"
+ShowCustomModel: "Custom Model Data value is %id%"
+ModelViewCommandUsage: "/model <MaterialID>"
+ModelViewCommandError: "%material% does not exist"

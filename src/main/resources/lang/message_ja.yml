@@ -1,0 +1,8 @@
+PermissionError: "&c権限がありません"
+AcmCommandUsage: "/acm <整数>"
+SetCustomModel: "カスタムモデルデータ値を%id%に設定しました"
+AcmCommandError: "整数もしくはコマンドを正しく入力してください"
+GcmCommandError: "/gcm"
+ShowCustomModel: "カスタムモデルデータ値は%id%です"
+ModelViewCommandUsage: "/model <MaterialID>"
+ModelViewCommandError: "%material%というアイテムIDは存在しません"
