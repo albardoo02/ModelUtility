@@ -33,7 +33,7 @@ public class AddCustomModelCommand implements CommandExecutor, TabCompleter {
             return true;
         }
         Player player = (Player) sender;
-        if (command.getName().equals("addcustommodel")) {
+        if (command.getName().equalsIgnoreCase("addcustommodel")) {
             if (!sender.hasPermission("modelutility.command.addcustommodel")) {
                 messageManager.sendMessage(player, "PermissionError");
                 return true;
