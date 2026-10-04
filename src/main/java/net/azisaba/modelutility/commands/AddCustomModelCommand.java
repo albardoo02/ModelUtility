@@ -41,6 +41,7 @@ public class AddCustomModelCommand implements CommandExecutor, TabCompleter {
 
             if (args.length == 0) {
                 messageManager.sendMessage(player, "AcmCommandUsage");
+                return true;
             }
 
             try {
